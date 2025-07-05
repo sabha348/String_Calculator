@@ -38,4 +38,8 @@ describe('String Calculator', () => {
     expect(add('2,1001')).to.equal(2);
   });
 
+  it('should handle multiple delimiters', () => {
+   expect(add('//[*][%]\n1*2%3')).to.equal(6);
+  });
+
 });

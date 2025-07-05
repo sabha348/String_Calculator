@@ -1,6 +1,11 @@
 function extractDelimiter(numbers) {
   if (numbers.startsWith('//')) {
-    return new RegExp(numbers.split('\n')[0].slice(2));
+    const parts = numbers.split('\n')[0].slice(2);
+    if (parts.startsWith('[')) {
+      const delimiters = parts.match(/\[([^\]]*)\]/g).map(d => d.slice(1, -1));
+      return new RegExp(delimiters.map(d => d.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')).join('|'));
+    }
+    return new RegExp(parts);
   }
   return /[\n,]/;
 }
