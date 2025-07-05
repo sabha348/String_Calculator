@@ -3,14 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-  "test": "mocha test/calculator.test.js"
+    "test": "mocha --require esm test/*.test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^5.2.0",
-    "mocha": "^11.7.1"
+    "esm": "^3.2.25",
+    "mocha": "^11.7.1",
+    "supertest": "^6.3.3"
   }
 }
