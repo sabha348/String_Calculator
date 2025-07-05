@@ -9,7 +9,12 @@ function parseNumbers(numbers) {
   if (numbers === '') return [];
   const delimiter = extractDelimiter(numbers);
   const numString = numbers.startsWith('//') ? numbers.split('\n').slice(1).join('\n') : numbers;
-  return numString.split(delimiter).map(num => Number(num) || 0);
+  const nums = numString.split(delimiter).map(num => Number(num) || 0);
+  const negatives = nums.filter(num => num < 0);
+  if (negatives.length > 0) {
+    throw new Error(`negative numbers not allowed ${negatives.join(',')}`);
+  }
+  return nums;
 }
 
 function add(numbers) {
