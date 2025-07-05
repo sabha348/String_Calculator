@@ -14,7 +14,7 @@ function parseNumbers(numbers) {
   if (negatives.length > 0) {
     throw new Error(`negative numbers not allowed ${negatives.join(',')}`);
   }
-  return nums;
+  return nums.filter(num => num <= 1000);
 }
 
 function add(numbers) {
