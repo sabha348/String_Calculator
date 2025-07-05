@@ -16,8 +16,7 @@ app.post('/add', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
-// Only start the server if this file is run directly
-if (process.argv[1] === import.meta.url) {
+if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 }
 
