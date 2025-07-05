@@ -22,4 +22,8 @@ describe('String Calculator', () => {
    expect(add('1,invalid,3')).to.equal(4);
   });
 
+  it('should handle new lines as delimiters', () => {
+   expect(add('1\n2,3')).to.equal(6);
+  });
+
 });
