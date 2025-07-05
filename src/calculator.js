@@ -1,6 +1,8 @@
 function parseNumbers(numbers) {
   if (numbers === '') return [];
-  if (numbers.includes(',')) return numbers.split(',').map(Number);
+  if (numbers.includes(',')) {
+    return numbers.split(',').map(num => Number(num) || 0);
+  }
   return [Number(numbers) || 0];
 }
 

@@ -12,6 +12,14 @@ describe('String Calculator', () => {
 
   it('should return sum of two comma-separated numbers', () => {
    expect(add('1,5')).to.equal(6);
- });
- 
+  });
+
+  it('should handle multiple comma-separated numbers', () => {
+   expect(add('1,2,3,4')).to.equal(10);
+  });
+
+  it('should handle invalid numbers gracefully', () => {
+   expect(add('1,invalid,3')).to.equal(4);
+  });
+
 });
