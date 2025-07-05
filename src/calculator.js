@@ -1,9 +1,15 @@
+function extractDelimiter(numbers) {
+  if (numbers.startsWith('//')) {
+    return new RegExp(numbers.split('\n')[0].slice(2));
+  }
+  return /[\n,]/;
+}
+
 function parseNumbers(numbers) {
   if (numbers === '') return [];
-  if (numbers.includes(',') || numbers.includes('\n')) {
-    return numbers.split(/[\n,]/).map(num => Number(num) || 0);
-  }
-  return [Number(numbers) || 0];
+  const delimiter = extractDelimiter(numbers);
+  const numString = numbers.startsWith('//') ? numbers.split('\n').slice(1).join('\n') : numbers;
+  return numString.split(delimiter).map(num => Number(num) || 0);
 }
 
 function add(numbers) {
